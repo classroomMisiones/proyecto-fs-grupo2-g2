@@ -1,13 +1,17 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms'
+
+import { compareValidator } from 'src/app/validations/compare-validator.directive';
+import { passwordValidation } from 'src/app/validations/password-validations.directive';
+
 import Aos from 'aos';
 
 @Component({
-  selector: 'app-contacto',
-  templateUrl: './contacto.component.html',
-  styleUrls: ['./contacto.component.css']
+  selector: 'app-registro',
+  templateUrl: './registro.component.html',
+  styleUrls: ['./registro.component.css']
 })
-export class ContactoComponent implements OnInit {
+export class RegistroComponent implements OnInit {
 
    emailPattern: any = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -17,32 +21,30 @@ export class ContactoComponent implements OnInit {
     return new FormGroup ({
       nombre: new FormControl('',[Validators.required, Validators.minLength(5)]),
       email: new FormControl('',[Validators.required, Validators.pattern(this.emailPattern)]),
-      telefono: new FormControl('',[Validators.required, Validators.minLength(6), Validators.pattern(this.telefPattern)]),
-      consulta: new FormControl('',[Validators.required, Validators.maxLength(280)])
+      password: new FormControl('',[Validators.required, Validators.minLength(8),passwordValidation()]),
+      repitPassword: new FormControl('',[Validators.required, compareValidator('password')]),
     });
   }
 
-  contactForm: FormGroup;
-
-  list = ['Contáctate con nosotros'];
+  registroForm: FormGroup;
 
   constructor(private render: Renderer2) {
-    this.contactForm = this.createFormGroup();
+    this.registroForm = this.createFormGroup();
    }
 
   ngOnInit(): void {
 
-    const elment = document.getElementById('contact-wrap');
+    const elment = document.getElementById('registro-wrap');
     const obj = elment?.getBoundingClientRect();
     const height = obj?.height!;
 
-    console.log('height contact-wrap '+height );
+    console.log('height registro-wrap '+height );
 
-    const elment1 = document.getElementById('pageContacto');
+    const elment1 = document.getElementById('pageRegistro');
     const obj1 = elment1?.getBoundingClientRect();
     const height1 = obj1?.height!;
 
-    console.log('page '+height1 );
+    console.log('pageRegistro '+height1 );
 
     Aos.init();
 
@@ -54,15 +56,15 @@ export class ContactoComponent implements OnInit {
     // }
   }
 
-  onContact() {
-    if (this.contactForm.valid) {
+  onRegister() {
+    if (this.registroForm.valid) {
         console.log('saved form');
     }
   }
 
   agregaError() {
-    const contact = document.getElementById('contact-wrap');
-    const page = document.getElementById('pageContacto');
+    const contact = document.getElementById('registro-wrap');
+    const page = document.getElementById('pageRegistro');
     const imagenFondo = document.getElementById('imagenFondo');
     const obj = contact?.getBoundingClientRect();
     let heightContact = obj?.height! + 10;
@@ -80,9 +82,9 @@ export class ContactoComponent implements OnInit {
     return true;
   }
 
-  get nombre() { return this.contactForm.get('nombre'); }
-  get email() { return this.contactForm.get('email'); }
-  get telefono() { return this.contactForm.get('telefono'); }
-  get consulta() { return this.contactForm.get('consulta'); }
+  get nombre() { return this.registroForm.get('nombre'); }
+  get email() { return this.registroForm.get('email'); }
+  get password() { return this.registroForm.get('password'); }
+  get repitPassword() { return this.registroForm.get('repitPassword'); }
 
 }

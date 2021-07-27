@@ -1,8 +1,8 @@
-<div class="page position-relative pt-3" id="page" data-aos="fade-down" data-aos-duration="2000">
-      <div class="contact-wrap" id="contact-wrap">
+<div class="pageContacto position-relative d-flex align-items-center" id="pageContacto" data-aos="fade-down" data-aos-duration="2000">
+      <div class="contact-wrap d-flex justify-content-center" id="contact-wrap">
         <div class="contact-html">
           <h2 class="position-relative text-center text-white pb-2">Contacto</h2>
-          <form [formGroup]="contactForm" class="contact-form" (ngSubmit)="saveFormContact()">
+          <form [formGroup]="contactForm" class="contact-form" (ngSubmit)="onContact()">
             <div class="sign-in-htm">
               <div class="group">
                 <label for="nombre" class="label">Nombre</label>

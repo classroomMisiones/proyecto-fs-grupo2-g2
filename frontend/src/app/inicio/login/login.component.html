@@ -1,0 +1,38 @@
+<div class="pageLogin position-relative d-flex align-items-center" data-aos="fade-down" data-aos-duration="2000">
+    <div class="login-wrap d-flex justify-content-center">
+      <div class="login-html">
+        <h2 class="position-relative text-center text-white pb-2">Iniciar Sesión</h2>
+        <form [formGroup]="formulariologin" class="login-form" (ngSubmit)="clickBtnLogin()">
+          <div class="sign-in-html">
+            <div class="group">
+              <label for="email" class="label">Email</label>
+              <input id="email" type="text" class="input" formControlName="email">
+            </div>
+            <div class="group">
+              <label for="password" class="label">Contraseña</label>
+              <input id="password" type="password" class="input" formControlName="password" data-type=password>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexcheckdefault" formControlName="recuerdame">
+              <label class="form-check-label" for="flexcheckdefault">
+                Recuérdame
+              </label>
+            </div>
+            <div class="group">
+              <!-- <button class="button btn btn-primary" type="submit">Ingresar</button> -->
+              <button class="btn btn-primary w-100 p-3 mt-4 rounded" type="submit">Ingresar</button>
+
+
+              <!-- <input   class="button btn-primary" value="Ingresar"> -->
+            </div>
+            <div class="hr"></div>
+            <div class="foot-lnk">
+              <a href="#forgot">Olvidaste tu contraseña?</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+

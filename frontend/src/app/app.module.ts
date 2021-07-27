@@ -16,6 +16,12 @@ import { BilleteraComponent } from './inicio/billetera/billetera.component';
 import { BeneficiosComponent } from './inicio/beneficios/beneficios.component';
 import { ContactoComponent } from './inicio/contacto/contacto.component';
 import { BackgroundComponent } from './shared/background/background.component';
+import { LoginComponent } from './inicio/login/login.component';
+import { RegistroComponent } from './inicio/registro/registro.component';
+
+import { PasswordValidationDirective } from './validations/password-validations.directive';
+import { CompareValidatorDirective } from './validations/compare-validator.directive';
+
 
 @NgModule({
   declarations: [
@@ -27,7 +33,11 @@ import { BackgroundComponent } from './shared/background/background.component';
     BilleteraComponent,
     BeneficiosComponent,
     ContactoComponent,
-    BackgroundComponent
+    BackgroundComponent,
+    LoginComponent,
+    RegistroComponent,
+    PasswordValidationDirective,
+    CompareValidatorDirective
   ],
   imports: [
     BrowserModule,

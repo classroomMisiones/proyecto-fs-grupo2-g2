@@ -6,6 +6,9 @@ import { QuienessomosComponent } from './inicio/quienessomos/quienessomos.compon
 import { BilleteraComponent } from './inicio/billetera/billetera.component';
 import { BeneficiosComponent } from './inicio/beneficios/beneficios.component';
 import { ContactoComponent } from './inicio/contacto/contacto.component';
+import { RegistroComponent } from './inicio/registro/registro.component';
+import { LoginComponent } from './inicio/login/login.component';
+
 
 
 const routes: Routes = [
@@ -14,7 +17,9 @@ const routes: Routes = [
   { path: 'nosotros', component: QuienessomosComponent},
   { path: 'billetera', component: BilleteraComponent},
   { path: 'beneficios', component: BeneficiosComponent},
-  { path: 'contacto', component: ContactoComponent}
+  { path: 'contacto', component: ContactoComponent},
+  { path: 'login', component: LoginComponent},
+  { path: 'registro', component: RegistroComponent}
 
 ];
 
