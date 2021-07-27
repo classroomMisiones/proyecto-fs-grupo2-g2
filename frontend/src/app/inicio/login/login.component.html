@@ -1,0 +1,34 @@
+<div class="page">
+    <div class="login-wrap">
+      <div class="login-html">
+        <h2 class="position-relative text-center text-white pb-2">Iniciar Sesión</h2>
+        <form [formGroup]="formulariologin" class="login-form" (ngSubmit)="clickBtnLogin()">
+          <div class="sign-in-html">
+            <div class="group">
+              <label for="email" class="label">Email</label>
+              <input id="email" type="text" class="input" formControlName="email">
+            </div>
+            <div class="group">
+              <label for="password" class="label">Contraseña</label>
+              <input id="password" type="password" class="input" formControlName="password" data-type=password>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexcheckdefault" formControlName="recuerdame">
+              <label class="form-check-label" for="flexcheckdefault">
+                Recuérdame
+              </label>
+            </div>
+            <div class="group">
+              <input  type="submit" class="button" value="Ingresar">
+            </div>
+            <div class="hr"></div>
+            <div class="foot-lnk">
+              <a href="#forgot">Olvidaste tu contraseña?</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  
