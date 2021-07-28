@@ -23,7 +23,10 @@ export class LoginComponent implements OnInit {
    }
 
   ngOnInit(): void {
+<<<<<<< HEAD
     Aos.init();
+=======
+>>>>>>> 2acee5b6d846e3b21351a073eaba705a29104470
   }
   get email(){
     return this.formulariologin.get('email')
