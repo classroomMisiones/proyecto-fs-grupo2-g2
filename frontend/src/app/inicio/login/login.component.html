@@ -1,5 +1,5 @@
-<div class="page">
-    <div class="login-wrap">
+<div class="pageLogin position-relative d-flex align-items-center" data-aos="fade-down" data-aos-duration="2000">
+    <div class="login-wrap d-flex justify-content-center">
       <div class="login-html">
         <h2 class="position-relative text-center text-white pb-2">Iniciar Sesión</h2>
         <form [formGroup]="formulariologin" class="login-form" (ngSubmit)="clickBtnLogin()">
@@ -19,7 +19,11 @@
               </label>
             </div>
             <div class="group">
-              <input  type="submit" class="button" value="Ingresar">
+              <!-- <button class="button btn btn-primary" type="submit">Ingresar</button> -->
+              <button class="btn btn-primary w-100 p-3 mt-4 rounded" type="submit">Ingresar</button>
+
+
+              <!-- <input   class="button btn-primary" value="Ingresar"> -->
             </div>
             <div class="hr"></div>
             <div class="foot-lnk">
@@ -30,5 +34,5 @@
       </div>
     </div>
   </div>
-  
-  
+
+
