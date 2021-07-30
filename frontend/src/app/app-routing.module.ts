@@ -13,12 +13,12 @@ import { LoginComponent } from './inicio/login/login.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'home', component: HomeComponent },
+  { path: 'inicio', component: HomeComponent },
   { path: 'nosotros', component: QuienessomosComponent},
   { path: 'billetera', component: BilleteraComponent},
   { path: 'beneficios', component: BeneficiosComponent},
   { path: 'contacto', component: ContactoComponent},
-  { path: 'login', component: LoginComponent},
+  { path: 'login',  component: LoginComponent},
   { path: 'registro', component: RegistroComponent}
 
 ];

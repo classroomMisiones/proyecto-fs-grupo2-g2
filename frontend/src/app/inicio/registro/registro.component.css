@@ -199,6 +199,14 @@ p {
   color: #f7941f;
 }
 
+.tienesCuenta a {
+  text-decoration: underline;
+}
+
+.tienesCuenta a:hover {
+  text-decoration-color: #F07F54;
+}
+
 @media screen and (min-width:400px) {
   .registro-html {
     width: 80%;

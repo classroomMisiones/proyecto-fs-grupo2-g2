@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BilleteraComponent implements OnInit {
 
-  list = ['Qué es una billetera virtual?'];
+  list = ['¿Qué es una billetera virtual?'];
 
   constructor() { }
 
