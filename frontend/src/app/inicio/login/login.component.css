@@ -156,6 +156,15 @@ p {
   color: #f7941f;
 }
 
+.noTienesCuenta a {
+  color: white;
+  text-decoration: underline;
+}
+
+.noTienesCuenta a:hover {
+  text-decoration-color: #F07F54;
+}
+
 @media screen and (min-width:400px) {
   .login-html {
     width: 80%;

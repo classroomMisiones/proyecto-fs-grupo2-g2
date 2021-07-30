@@ -2,7 +2,7 @@
     <div class="login-wrap d-flex justify-content-center">
       <div class="login-html">
         <h2 class="position-relative text-center text-white pb-2">Iniciar Sesión</h2>
-        <form [formGroup]="formulariologin" class="login-form" (ngSubmit)="clickBtnLogin()">
+        <form [formGroup]="formulariologin" class="login-form" (ngSubmit)="onLogin()">
           <div class="sign-in-html">
             <div class="group">
               <label for="email" class="label">Email</label>
@@ -20,15 +20,16 @@
             </div>
             <div class="group">
               <!-- <button class="button btn btn-primary" type="submit">Ingresar</button> -->
-              <button class="btn btn-primary w-100 p-3 mt-4 rounded" type="submit">Ingresar</button>
-
-
+              <button class="btn btn-primary w-100 p-3 mt-4 rounded" type="submit" [disabled]="formulariologin.invalid">Ingresar</button>
               <!-- <input   class="button btn-primary" value="Ingresar"> -->
             </div>
             <div class="hr"></div>
             <div class="foot-lnk">
               <a href="#forgot">Olvidaste tu contraseña?</a>
             </div>
+            <h6 class="noTienesCuenta mt-4 text-white">¿Todavía no tienes cuenta?
+              <a routerLink="/registro">Registrate</a>
+            </h6>
           </div>
         </form>
       </div>

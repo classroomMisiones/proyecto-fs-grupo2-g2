@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup } from '@angular/forms';
+import {FormControl, FormGroup, Validators } from '@angular/forms';
 import Aos from 'aos';
 
 @Component({
@@ -8,10 +8,13 @@ import Aos from 'aos';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+
+  emailPattern: any = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
   createFormGroup() {
     return new FormGroup ({
-      email: new FormControl(''),
-      password: new FormControl(''),
+      email: new FormControl('',[Validators.required, Validators.pattern(this.emailPattern)]),
+      password: new FormControl('',[Validators.required]),
       recuerdame: new FormControl(true)
     });
   }
@@ -23,10 +26,7 @@ export class LoginComponent implements OnInit {
    }
 
   ngOnInit(): void {
-<<<<<<< HEAD
     Aos.init();
-=======
->>>>>>> 2acee5b6d846e3b21351a073eaba705a29104470
   }
   get email(){
     return this.formulariologin.get('email')
@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
     return this.formulariologin.get('recuerdame')
   }
 
-  clickBtnLogin() {
+  onLogin() {
     if (this.formulariologin.valid) {
       console.log('control validez credenciales');
   }
