@@ -1,76 +1,66 @@
 #billetera {
-  /* width: 100%; */
-  /* overflow-x:visible; */
   width: 100%;
-  min-height: 100rem;
+  min-height: 90rem;
   padding-bottom: 30px;
   z-index: 1;
 }
 
-.contenedor {
- /* position: relative; */
- width: 100%;
- left: 0;
- height: 65vh;
- display:grid;
- grid-template-columns: 1fr;
- grid-template-rows: 260px 80px 260px 80px 260px 80px 260px;
- place-items: center center;
- z-index: 1;
-}
-
-.aplicacionWeb {
-  grid-column: 1/2;
-  grid-row: 1/2;
-}
-
-.comprasVrtuales {
-  grid-column: 1/2;
-  grid-row: 3/4;
-}
-
-.cuentaBancaria {
-  grid-column: 1/2;
-  grid-row: 7/8;
-}
-
-.comprasOnline {
-  grid-column: 1/2;
-  grid-row: 5/6;
-}
-
-
-
-
-
-
 .texto {
-  /* width: 55%; */
   text-align: center;
 }
 
-.remarcado {
-  /* color: aqua; */
-  /* color: #F07F54; */
-  /* background: linear-gradient(90deg, #F07F54 0%, #F07F54 100%);
-  background-position: 0% 100%;
-  background-repeat: no-repeat;
-  background-size: 100% 3px; */
-}
 .titulo {
-  /* position: absolute !important; */
-  /* width: 80%; */
   font-size: 2.5rem;
   font-weight:bolder;
 }
 
 .titular {
-  /* position: absolute !important; */
-
-  width: 100%;
-  /* left:-25%; */
-  /* width: 80%; */
+  text-align: justify;
+  width: 95%;
 }
+
+.contenedor {
+  /* position: relative; */
+  width: 100%;
+  left: 0;
+  height: 65vh;
+  display:grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 260px 80px 260px 80px 260px 80px 260px;
+  justify-content: center;
+  place-items: center center;
+  z-index: 1;
+ }
+
+ .aplicacionWeb {
+   grid-column: 1/2;
+   grid-row: 1/2;
+ }
+
+ .enviaryrecibir {
+   grid-column: 1/2;
+   grid-row: 3/4;
+ }
+
+ .cuentaBancaria {
+   margin-top: 6rem;
+   grid-column: 1/2;
+   grid-row: 7/8;
+ }
+
+ .criptomonedas {
+   margin-top: 5.5rem;
+   grid-column: 1/2;
+   grid-row: 5/6;
+ }
+
+ .p-cripto{
+   top: -3.5rem;
+ }
+
+ .p-ctas {
+   top: -2rem;
+ }
 
 .imagenbilletera {
   max-width: 230px;
@@ -102,6 +92,7 @@
 
 .icono-abajo2 {
   position: relative;
+  top: 2rem;
   z-index: 1;
   background-color: white;
   width: 64px;
@@ -123,7 +114,6 @@
 @media screen and (min-width:576px) {
 
   #billetera {
-    /* height: 40rem; */
     min-height: 40rem;
   }
 
@@ -134,31 +124,41 @@
   }
 
   .contenedor {
-    width: 100%;
-    left: calc((100vw - 550px)/2);;
+    width: 80%;
+    margin-top: 3rem;
+    /* left: calc((100vw - 550px)/2);; */
     grid-template-columns: minmax(200px,250px) 50px minmax(200px,250px);
     grid-template-rows: 45% 13% 45%;
     place-items: center center;
+    margin-bottom: 3rem;
    }
 
   .aplicacionWeb {
     grid-column: 1/2;
     grid-row: 1/2;
+    padding-bottom: 2rem;
   }
 
-  .comprasVrtuales {
+  .enviaryrecibir {
     grid-column: 3/4;
     grid-row: 1/2;
+    padding-bottom: 2rem;
   }
 
   .cuentaBancaria {
+    margin-top: 0;
     grid-column: 1/2;
     grid-row: 3/4;
   }
 
-  .comprasOnline {
+  .criptomonedas {
+    margin-top: 0;
     grid-column: 3/4;
     grid-row: 3/4;
+  }
+
+  .p-cripto, .p-ctas {
+    top: 12.5rem;
   }
 
   .icono-derecha {
@@ -201,11 +201,9 @@
 
 }
 
-@media screen and (min-width:768px) {
-
-
-  .imagenbilletera {
-    /* width: 55%; */
+@media screen and (min-width: 768px) {
+  .titular {
+    width: 90%;
   }
 }
 
@@ -217,77 +215,23 @@
   }
 
   .texto {
-    width: 55%;
-    top: -12vh;
+    width: 50%;
   }
 
   .titulo {
-    top:25vh;
-    left:0%;
+    /* left:4%; */
     font-size: 34px !important;
   }
 
   .titular {
-    width: 90%;
-    top:52%;
-    left: 5%;
+    /* left: 5%; */
   }
 
   .contenedor {
-    width: 43%;
-    left: 52%;
-    top:-40vh;
+    width: 50%;
+    left: -1%;
     height: 65vh;
    }
-
-}
-
-@media screen and (min-width:1068px) and (max-width:1199px) {
-  .titulo {
-    left: 2%;
-  }
-  .texto {
-    top: -5vh;
-    left: 0%;
-  }
-}
-
-@media screen and (min-width:1041px) and (max-width:1060px) {
-  .contenedor {
-    top:-40vh;
-  }
-}
-
-@media screen and (min-width:1061px) {
-  .contenedor {
-    top:-35vh;
-  }
-}
-
-
-@media screen and (min-width: 1156px) {
-  .contenedor {
-    top: -30vh;
-  }
-}
-
-
-@media screen and (min-width:1200px) {
-
-  .texto {
-    top:0vh;
-  }
-
-  .titulo {
-    top:50%;
-    left:5%;
-  }
-
-  .titular {
-    top:52%;
-    left: 5%;
-    width: 90%;
-  }
 
 }
 
@@ -299,15 +243,13 @@
   }
 
   .titulo {
-    top:50%;
-    left:-10%;
+    left: -2%;
     transform: rotate(-15deg);
   }
 
   .titular {
-    top:52%;
     left: 5%;
-    width: 90%;
+    width: 80%;
     transform: rotate(-15deg);
   }
 
