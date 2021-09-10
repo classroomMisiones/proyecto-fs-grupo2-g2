@@ -19,7 +19,7 @@ export class HeaderComponent implements OnInit {
     for(var i=0; i < navItems.length; i++) {
       this.render.removeClass(navItems[i],'active');
     }
-    if (id!=='brand'){
+    if (id!=='brand' && id!=='registro' && id!=='login'){
       this.render.addClass(link,'active');
     }
     const imagenFondo = document.getElementById('imagenFondo');
@@ -49,6 +49,8 @@ export class HeaderComponent implements OnInit {
         this.render.addClass(navbarMenu,'scroll');
 
         const totallHeight = document.body.clientHeight + 50;
+
+        console.log('total height ' + totallHeight);
 
         // const heightImagenFondo = ;
         this.render.setStyle(imagenFondo,'height',`${totallHeight}px`);
