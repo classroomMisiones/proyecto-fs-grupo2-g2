@@ -8,13 +8,10 @@ function scrollOffset() {
   if (scroll > 0){
     menuNavbar.classList.add('scroll');
     showBackground = true;
-    console.log('true')
   }
   else {
     menuNavbar.classList.remove('scroll');
     showBackground = false;
-    console.log('false')
-
   }
 }
 
