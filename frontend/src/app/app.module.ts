@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 
 import { AngularTypewriterEffectModule } from 'angular-typewriter-effect';
 
@@ -18,9 +20,15 @@ import { ContactoComponent } from './inicio/contacto/contacto.component';
 import { BackgroundComponent } from './shared/background/background.component';
 import { LoginComponent } from './inicio/login/login.component';
 import { RegistroComponent } from './inicio/registro/registro.component';
+import { ConfirmDialogComponent } from './shared/confirm-dialog/confirm-dialog.component';
 
 import { PasswordValidationDirective } from './validations/password-validations.directive';
 import { CompareValidatorDirective } from './validations/compare-validator.directive';
+import { DashboardModule } from './dashboard/dashboard.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
+
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -37,14 +45,21 @@ import { CompareValidatorDirective } from './validations/compare-validator.direc
     LoginComponent,
     RegistroComponent,
     PasswordValidationDirective,
-    CompareValidatorDirective
+    CompareValidatorDirective,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     AngularTypewriterEffectModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DashboardModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
+    HttpClientModule,
+    ToastrModule.forRoot()
   ],
+  entryComponents: [ConfirmDialogComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

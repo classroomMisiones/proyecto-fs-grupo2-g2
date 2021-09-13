@@ -207,6 +207,11 @@ p {
   text-decoration-color: #F07F54;
 }
 
+ul li:hover a {
+  text-decoration: underline;
+  text-decoration-color: #f7941f;
+}
+
 @media screen and (min-width:400px) {
   .registro-html {
     width: 80%;

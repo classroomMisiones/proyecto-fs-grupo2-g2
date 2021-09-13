@@ -5,6 +5,12 @@ import { compareValidator } from 'src/app/validations/compare-validator.directiv
 import { passwordValidation } from 'src/app/validations/password-validations.directive';
 
 import Aos from 'aos';
+import { DataService } from 'src/app/services/data.service';
+import { Router } from '@angular/router';
+
+import * as CryptoJS from 'crypto-js';
+
+import { NotificacionService } from 'src/app/services/notificacion.service';
 
 @Component({
   selector: 'app-registro',
@@ -27,9 +33,11 @@ export class RegistroComponent implements OnInit {
   }
 
   registroForm: FormGroup;
+  public isError: Boolean;
 
-  constructor(private render: Renderer2) {
+  constructor(private render: Renderer2, private data: DataService, private router: Router, private notifyService: NotificacionService ) {
     this.registroForm = this.createFormGroup();
+    this.isError = false;
    }
 
   ngOnInit(): void {
@@ -38,13 +46,9 @@ export class RegistroComponent implements OnInit {
     const obj = elment?.getBoundingClientRect();
     const height = obj?.height!;
 
-    console.log('height registro-wrap '+height );
-
     const elment1 = document.getElementById('pageRegistro');
     const obj1 = elment1?.getBoundingClientRect();
     const height1 = obj1?.height!;
-
-    console.log('pageRegistro '+height1 );
 
     Aos.init();
 
@@ -58,8 +62,100 @@ export class RegistroComponent implements OnInit {
 
   onRegister() {
     if (this.registroForm.valid) {
-        console.log('saved form');
+      const nombre = this.registroForm.get('nombre')!.value;
+      const email = this.registroForm.get('email')!.value;
+      const password = this.registroForm.get('password')!.value;
+      const cvu = this.getCvu(10);
+      let alias='';
+      let palabras=[];
+      this.data.getAlias().subscribe({
+        next: response => {
+          palabras = response.split(",");
+          for (let i=0; i < palabras.length ; i++){
+            palabras[i] = palabras[i].trim();
+          }
+          alias = this.obtieneAlias(palabras,3,1000);
+          console.log(alias);
+          this.data.registroCliente(nombre,email,password,cvu,alias,"Habilitado").subscribe({
+            next: response => {
+              console.log(response);
+              if (response===200) {
+                this.notifyService.showSuccess('El registro ha sido exitoso', 'Felicitaciones');
+                setTimeout(()=> {
+                  this.router.navigate(['login']);
+                },5000);
+              } else if(response>0){
+                if (response===1) {
+                  this.notifyService.showWarning('Ya existe un usuario registrado con ese Email', 'Atención');
+                } else {
+                  this.notifyService.showWarning('Error momentáneo de conexión. Intente nuevamente', 'Atención');
+                }
+                setTimeout(()=> {
+                  this.limpia();
+                },5000);
+              } else{
+                this.notifyService.showError('Contáctese con el Administrador','Ha ocurrido un Error');
+                setTimeout(()=> {
+                  this.salir()
+                  // this.router.navigate(['inicio']);
+                },5000);
+              }
+            },
+            error: error => {
+              this.notifyService.showError(error.name + ' Contáctese con el Administrador','Ha ocurrido un Error');
+              setTimeout(()=> {
+                this.salir()
+                // this.router.navigate(['inicio']);
+              },5000);
+              // alert('Ha ocurrido un error ' + error.message + ' Contáctese con el Administrador. Será redirigido a la página de Inicio');
+              // this.router.navigate(['inicio']);
+            }
+          });
+        },
+        error: error => {
+          this.notifyService.showError('No se ha podido generar el Alias. Contáctese con el Administrador','Ha ocurrido un Error');
+          setTimeout(()=> {
+            this.salir()
+            // this.router.navigate(['inicio']);
+          },5000);
+        }
+      });
     }
+  }
+
+  getCvu(max: number) {
+
+    let cvu = Math.floor(Math.random() * max).toString();
+    while (cvu === '0') {
+      cvu = Math.floor(Math.random() * max).toString();
+    }
+    for (let i=0; i < 21; i++){
+      cvu += Math.floor(Math.random() * max).toString()
+    }
+    return cvu;
+  }
+
+  obtieneAlias(palabras:string[], nroPalabras: number, max: number) {
+    let indice; let alias='';
+    for (let i=0; i < nroPalabras; i++) {
+      indice = Math.floor(Math.random() * max);
+      alias += (i===0 ? "" : ".") + palabras[indice];
+    }
+    return alias;
+  }
+
+  limpia() {
+    this.isError = false;
+    this.registroForm = new FormGroup ({
+      nombre: new FormControl('',[Validators.required, Validators.minLength(5)]),
+      email: new FormControl('',[Validators.required, Validators.pattern(this.emailPattern)]),
+      password: new FormControl('',[Validators.required, Validators.minLength(8),passwordValidation()]),
+      repitPassword: new FormControl('',[Validators.required, compareValidator('password')]),
+    });
+  }
+
+  salir() {
+    this.router.navigate(['inicio']);
   }
 
   agregaError() {

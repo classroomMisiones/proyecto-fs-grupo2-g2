@@ -36,13 +36,9 @@ export class ContactoComponent implements OnInit {
     const obj = elment?.getBoundingClientRect();
     const height = obj?.height!;
 
-    console.log('height contact-wrap '+height );
-
     const elment1 = document.getElementById('pageContacto');
     const obj1 = elment1?.getBoundingClientRect();
     const height1 = obj1?.height!;
-
-    console.log('page '+height1 );
 
     Aos.init();
 

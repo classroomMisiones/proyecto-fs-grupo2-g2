@@ -10,13 +10,13 @@ export class HomeComponent implements OnInit {
 
   constructor(private render: Renderer2) { }
 
-  ngOnInit(): void {
+  texto:string[]=[];
 
+  ngOnInit(): void {
     const imagenFondo = document.getElementById('imagenFondo');
     const footer = document.getElementById('footer');
     const topFooter = imagenFondo?.clientHeight! - 50;
     this.render.setStyle(footer,'top',`${topFooter}px`);
-
     AOS.init();
   }
 

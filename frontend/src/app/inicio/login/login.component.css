@@ -165,6 +165,21 @@ p {
   text-decoration-color: #F07F54;
 }
 
+ul li {
+  font-size: 20px;
+  color: white;
+}
+
+ul li a {
+  color:white;
+  font-size: 16px;
+}
+
+ul li:hover a {
+  text-decoration: underline;
+  text-decoration-color: #f7941f;
+}
+
 @media screen and (min-width:400px) {
   .login-html {
     width: 80%;
